@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DangKiActivity"
+    android:background="#FFFFE0	">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:scaleType="fitCenter"
+            android:id="@+id/imagFile"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="150dp"
+            android:layout_height="100dp"/>
+        <Button
+            android:id="@+id/getImage"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="Chọn ảnh đại diện"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:ems="12"
+                android:maxLength="20"
+                android:id="@+id/txtDangKiUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Username" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:ems="12"
+                android:maxLength="10"
+                android:id="@+id/txtDangKiSdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Số điện thoại" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            app:passwordToggleEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:ems="12"
+                android:maxLength="20"
+                android:id="@+id/txtDangKiPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            app:counterMaxLength="20"
+            app:passwordToggleEnabled="true"
+            app:counterEnabled="true"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:ems="12"
+                android:maxLength="20"
+                android:id="@+id/txtDangKiConfimPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Confim Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnDangKiHuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:text="Hủy"
+                android:background="#DA70D6"/>
+
+            <Button
+                android:id="@+id/btnDangKi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:background="#DA70D6"
+                android:text="Đăng kí" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="153dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo" />
+
+    </LinearLayout>
+
+</FrameLayout>
