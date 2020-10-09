@@ -27,8 +27,6 @@ public class DangKiActivity extends AppCompatActivity {
     Button btnHuy, btnDangKi, btnGetImage;
     ImageView img;
     TextInputEditText txtUser, txtSdt, txtPass, txtConfimPass;
-    Bitmap bm = null;
-    public static List<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class DangKiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dang_ki);
 
         anhXa();
-        userList = new ArrayList<>();
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,10 +44,8 @@ public class DangKiActivity extends AppCompatActivity {
         btnDangKi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//              if (img.getDrawable()==null){
-////                  Toast.makeText(DangKiActivity.this, "Bạn chưa chọn ảnh đại diện", Toast.LENGTH_SHORT).show();
-////              }
-                userList.add(new User(txtUser.getText().toString(),txtSdt.getText().toString(),txtPass.getText().toString(),bm));
+                ChaoActivity.userDao.insertUser(new User(txtUser.getText().toString(),txtSdt.getText().toString(),txtPass.getText().toString()));
+                ChaoActivity.userList.add(new User(txtUser.getText().toString(),txtSdt.getText().toString(),txtPass.getText().toString()));
                 startActivity(new Intent(getApplicationContext(), QlNguoiDungActivity.class));
             }
         });
@@ -70,28 +65,6 @@ public class DangKiActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data != null && requestCode == 123 && resultCode == RESULT_OK) {
-            InputStream inputStream = null;
-            try {
-                inputStream = getContentResolver().openInputStream(data.getData());
-                bm = BitmapFactory.decodeStream(inputStream);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            if (inputStream!=null) {
-                img.setImageBitmap(bm);
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-    }
 
     public void anhXa() {
         btnHuy = findViewById(R.id.btnDangKiHuy);

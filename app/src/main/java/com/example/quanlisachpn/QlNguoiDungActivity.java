@@ -20,7 +20,7 @@ public class QlNguoiDungActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ql_nguoi_dung);
 
         recyclerView = findViewById(R.id.rcvUser);
-            recyclerUser = new RecyclerUser(DangKiActivity.userList, this, R.layout.recyclerview_user);
+            recyclerUser = new RecyclerUser(ChaoActivity.userList, this, R.layout.recyclerview_user);
             recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(recyclerUser);

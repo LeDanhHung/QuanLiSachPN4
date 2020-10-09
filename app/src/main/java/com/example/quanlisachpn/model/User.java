@@ -6,13 +6,11 @@ public class User {
     private String name;
     private String phoneNumber;
     private String password;
-    private Bitmap image;
 
-    public User(String name, String phoneNumber, String password, Bitmap image) {
+    public User(String name, String phoneNumber, String password) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.image = image;
     }
 
 
@@ -40,11 +38,4 @@ public class User {
         this.password = password;
     }
 
-    public Bitmap getImage() {
-        return image;
-    }
-
-    public void setImage(Bitmap image) {
-        this.image = image;
-    }
 }

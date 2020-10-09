@@ -23,13 +23,7 @@
             android:layout_height="match_parent">
 
 
-        <Button
-            android:text="Thêm"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnThem"
-            />
+
 
             <Button
                 android:text="Sửa"

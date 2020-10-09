@@ -12,21 +12,19 @@ import java.util.List;
 
 public class UserDao {
     private MySqlite mySqlite;
-    SQLiteDatabase sqLiteDatabase = mySqlite.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase;
     public UserDao(MySqlite mySqlite){
         this.mySqlite= mySqlite;
+        sqLiteDatabase = mySqlite.getWritableDatabase();
     }
     // them
-    public boolean insertUser(User user){
+    public void insertUser(User user){
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("userName",user.getName());
+        contentValues.put("name",user.getName());
         contentValues.put("password",user.getPassword());
-        contentValues.put("sdt",user.getPhoneNumber());
-        contentValues.put("image",String.valueOf(user.getImage()));
-     long kq=   sqLiteDatabase.insert("user",null,contentValues);
-        if (kq > 0) return true;
-        else return false;
+        contentValues.put("phoneNumber",user.getPhoneNumber());
+        sqLiteDatabase.insert("user",null,contentValues);
     }
     //
     public List<User> getAlluser(){
@@ -36,17 +34,15 @@ public class UserDao {
             String name = cursor.getString(0);
             String password = cursor.getString(1);
             String sdt = cursor.getString(2);
-            String img = cursor.getString(3);
-
+            userList.add(new User(name,password,sdt));
         }
         return userList;
     }
     public boolean updateUser(User user){
         ContentValues contentValues = new ContentValues();
         contentValues.put("password",user.getPassword());
-        contentValues.put("userName",user.getName());
-        contentValues.put("sdt",user.getPhoneNumber());
-        contentValues.put("image",String.valueOf(user.getImage()));
+        contentValues.put("name",user.getName());
+        contentValues.put("phoneNumber",user.getPhoneNumber());
         long kq= sqLiteDatabase.update("user",contentValues,"userName=? AND name=?",new String[]{user.getName()});
         if (kq > 0 ) return true;
         else return false;

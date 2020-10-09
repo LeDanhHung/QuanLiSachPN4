@@ -28,8 +28,8 @@ public class BIllDao {
             Cursor cursor = db.query("bill",null,null,null,null,null,null);
             if (cursor!=null){
                 while (cursor.moveToNext()){
-                    String ma = cursor.getString(cursor.getColumnIndex("maHoaDon"));
-                    String date = cursor.getString(cursor.getColumnIndex("ngayMua"));
+                    String ma = cursor.getString(0);
+                    String date = cursor.getString(1);
                     hoaDonList.add(new HoaDon(ma,date));
                 }
             }

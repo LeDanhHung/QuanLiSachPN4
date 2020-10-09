@@ -1,6 +1,5 @@
 package com.example.quanlisachpn.adapter;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,59 +22,50 @@ import com.example.quanlisachpn.R;
 import com.example.quanlisachpn.TrangChuAcivity;
 import com.example.quanlisachpn.model.HoaDon;
 import com.example.quanlisachpn.model.HoaDonChiTiet;
+import com.example.quanlisachpn.model.TheLoai;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class RecyclerHoaDon extends RecyclerView.Adapter<RecyclerHoaDon.ViewHoler> {
-    List<HoaDon> hoaDonList;
+public class RecyclerTheLoaiSach extends RecyclerView.Adapter<RecyclerTheLoaiSach.ViewHolder> {
+    List<TheLoai> theLoaiList ;
     Context context;
     int layout;
 
-
-    public RecyclerHoaDon(List<HoaDon> hoaDonList, Context context, int layout) {
-        this.hoaDonList = hoaDonList;
+    public RecyclerTheLoaiSach(List<TheLoai> theLoaiList, Context context, int layout) {
+        this.theLoaiList = theLoaiList;
         this.context = context;
         this.layout = layout;
     }
 
+    public RecyclerTheLoaiSach(List<TheLoai> theLoaiList) {
+        this.theLoaiList = theLoaiList;
+    }
+
     @NonNull
     @Override
-    public ViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layout, parent, false);
-        final ViewHoler viewHoler = new ViewHoler(view);
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = viewHoler.getAdapterPosition();
-//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                builder.setTitle("Hóa đơn chi tiết");
-//                builder.setMessage("Mã hóa đơn: " + TrangChuAcivity.hoaDonChiTietList.get(position).getMaHoaDon()
-//                        + "\nMã sách: " + TrangChuAcivity.hoaDonChiTietList.get(position).getMaSach()
-//                        + "\nSố lượng: " + TrangChuAcivity.hoaDonChiTietList.get(position).getSoLuongMua()
-//                );
-//                builder.show();
-//            }
-//        });
-        return viewHoler;
+        final ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHoler holder, final int position) {
-        final HoaDon hoaDon = hoaDonList.get(position);
-        holder.textNgayMua.setText("Ngày mua: " + hoaDon.getNgayMua());
-        holder.textMa.setText("Mã hóa đơn: " + hoaDon.getMaHoaDon());
-
-        holder.btnSua.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final TheLoai theLoai = theLoaiList.get(position);
+        holder.txtTheLoai.setText("The loai: " + theLoai.getTenTheLoai());
+        holder.txtMatheLoai.setText("Mã the loai: " + theLoai.getMaTheLoai());
+        holder.txtSoLuong.setText("So luong:  " + theLoai.getSoLuong());
+        holder.Suatl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ma = hoaDonList.get(holder.getAdapterPosition()).textButton;
                 final int position = holder.getAdapterPosition();
 
                 androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
-                builder.setTitle("Sửa hóa đơn");
+                builder.setTitle("Sửa the loai");
                 builder.setCancelable(false);
                 LayoutInflater inflater = LayoutInflater.from(context);
                 View view = inflater.inflate(R.layout.them_hoadon, null);
@@ -158,27 +149,28 @@ public class RecyclerHoaDon extends RecyclerView.Adapter<RecyclerHoaDon.ViewHole
                 notifyItemRemoved(holder.getAdapterPosition());
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return hoaDonList.size();
+        return 0;
     }
 
-    public class ViewHoler extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView txtTheLoai;
+        TextView txtMatheLoai;
+        TextView txtSoLuong;
+        ImageView Suatl;
+        ImageView Xoatl;
+        public ViewHolder(@NonNull View itemView) {
 
-        TextView textMa, textNgayMua;
-        Button btnThem;
-        Button btnSua;
-        Button btnXoa;
-
-        public ViewHoler(@NonNull View itemView) {
             super(itemView);
-            textMa = itemView.findViewById(R.id.textMa);
-            textNgayMua = itemView.findViewById(R.id.textNgayMua);
-            btnSua = itemView.findViewById(R.id.btnSua);
-            btnXoa = itemView.findViewById(R.id.btnXoa);
+            txtMatheLoai = itemView.findViewById(R.id.maTL);
+            txtTheLoai = itemView.findViewById(R.id.textTenTL);
+            txtSoLuong = itemView.findViewById(R.id.textSoLuong);
+            Suatl = itemView.findViewById(R.id.suatl);
+            Xoatl = itemView.findViewById(R.id.xoatl);
+
         }
     }
 }

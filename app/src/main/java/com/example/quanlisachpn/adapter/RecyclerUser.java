@@ -39,7 +39,7 @@ public class RecyclerUser extends RecyclerView.Adapter<RecyclerUser.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textUser.setText(userList.get(position).getName());
         holder.textSdt.setText(userList.get(position).getPhoneNumber());
-        holder.imageView.setImageBitmap(userList.get(position).getImage());
+
     }
 
     @Override

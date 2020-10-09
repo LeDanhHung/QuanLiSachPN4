@@ -21,11 +21,11 @@ public class BIllDetailDao {
         values.put("maHoaDon",hoaDonChiTiet.getMaHoaDon());
         values.put("maSach",hoaDonChiTiet.getMaSach());
         values.put("soLuongMua",hoaDonChiTiet.getSoLuongMua());
-        db.insert("billDetail",null,values);
+        db.insert("bill_detail",null,values);
     }
     public List<HoaDonChiTiet> getData(){
         List<HoaDonChiTiet> hoaDonChiTietList = new ArrayList<>();
-        Cursor cursor = db.query("billDetail",null,null,null,null,null,null);
+        Cursor cursor = db.query("bill_detail",null,null,null,null,null,null);
         if (cursor!=null){
             while (cursor.moveToNext()){
                 String maHoaDon = cursor.getString(cursor.getColumnIndex("maHoaDon"));
@@ -39,13 +39,13 @@ public class BIllDetailDao {
         return hoaDonChiTietList;
     }
     public void delete(String maHDCT){
-        db.delete("billDetail","maHDCT=?",new String[]{maHDCT});
+        db.delete("bill_detail","maHDCT=?",new String[]{maHDCT});
     }
     public void upadate(HoaDonChiTiet hoaDonChiTiet,String maHDCT){
         ContentValues values = new ContentValues();
         values.put("maHoaDon",hoaDonChiTiet.getMaHoaDon());
         values.put("maSach",hoaDonChiTiet.getMaSach());
         values.put("soLuongMua",hoaDonChiTiet.getSoLuongMua());
-        db.update("billDetail",values,"maHDCT=?",new String[]{maHDCT});
+        db.update("bill_detail",values,"maHDCT=?",new String[]{maHDCT});
     }
 }
